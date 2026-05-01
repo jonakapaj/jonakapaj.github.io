@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* ── Warm linen base, single accent ── */
+  --bg:        #ede9e1;   /* warm linen */
+  --bg-2:      #f5f2eb;   /* slightly lighter */
+  --bg-card:   #faf8f4;   /* card white */
+  --bg-muted:  #e4e0d8;   /* pressed state */
+
+  --ink:       #1c1814;   /* warm near-black */
+  --ink-2:     #7a7268;   /* warm mid */
+  --ink-3:     #b0a89e;   /* warm faint */
+
+  /* ONE accent — deep terracotta */
+  --accent:     #c2571a;
+  --accent-dim: rgba(194, 87, 26, 0.10);
+  --accent-mid: rgba(194, 87, 26, 0.22);
+
+  --border:     rgba(28, 24, 20, 0.10);
+  --border-2:   rgba(28, 24, 20, 0.06);
+
+  /* Font — just Outfit */
+  --font: 'Outfit', sans-serif;
+
+  /* Shape */
+  --r-sm:   0.3rem;
+  --r-md:   0.6rem;
+  --r-lg:   1.2rem;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.09);
+
+  --t-fast:   130ms cubic-bezier(.4,0,.2,1);
+  --t-mid:    270ms cubic-bezier(.4,0,.2,1);
+  --t-spring: 340ms cubic-bezier(.34,1.56,.64,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Dot grid — very subtle, on sections only */
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font);
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* ── Gradient text — warm, single hue ── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--ink) 20%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-accent { color: var(--accent); }
+.text-muted  { color: var(--ink-2); }
+
+/* ── Layout ── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+.section   { padding: 7rem 0; position: relative; z-index: 1; }
+
+/* ── Section label ── */
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-mid);
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--r-full);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+  line-height: 1.05;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--r-md);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  transition: all var(--t-spring);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Card base ── */
+.glass {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp  { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+@keyframes fadeIn  { from{opacity:0;} to{opacity:1;} }
+@keyframes float   { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);} }
+@keyframes pulse   { 0%,100%{opacity:.5;} 50%{opacity:1;} }
+@keyframes barGrow { from{width:0;} to{width:var(--fill);} }
+
+.animate-fade-up { animation: fadeUp .65s cubic-bezier(.4,0,.2,1) forwards; opacity:0; }
+.delay-100{animation-delay:100ms;} .delay-200{animation-delay:200ms;}
+.delay-300{animation-delay:300ms;} .delay-400{animation-delay:400ms;}
+.delay-500{animation-delay:500ms;} .delay-600{animation-delay:600ms;}

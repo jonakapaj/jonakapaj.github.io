@@ -1,0 +1,4 @@
+/* App-level styles — global layout only */
+#root {
+  min-height: 100vh;
+}
