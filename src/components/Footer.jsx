@@ -7,12 +7,11 @@ export default function Footer() {
       <div className="footer__line" />
       <div className="container footer__inner">
         <a href="#" className="footer__logo" id="footer-logo">
-          <span className="footer__logo-bracket">&lt;</span>
+          <img src="/analytics-laptop-svgrepo-com.svg" alt="JK Logo" className="footer__logo-img" />
           <span className="text-gradient">JK</span>
-          <span className="footer__logo-bracket">/&gt;</span>
         </a>
         <p className="footer__copy">
-          © {year} Jona Kapaj. Built with React & Three.js.
+          © {year} Jona Kapaj.
         </p>
         <a href="#hero" className="footer__back" id="footer-back-to-top" aria-label="Back to top">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

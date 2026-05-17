@@ -36,9 +36,8 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
         <a href="#" className="navbar__logo" id="nav-logo">
-          <span className="navbar__logo-bracket">&lt;</span>
+          <img src="/analytics-laptop-svgrepo-com.svg" alt="JK Logo" className="navbar__logo-img" />
           <span className="text-gradient">JK</span>
-          <span className="navbar__logo-bracket">/&gt;</span>
         </a>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
